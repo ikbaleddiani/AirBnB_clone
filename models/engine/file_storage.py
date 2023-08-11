@@ -3,8 +3,7 @@
     FileStorage model:
     serializes instances to a JSON file and deserializes JSON file to instances
 """
-from models.base_model import BaseModel
-from models.user import User
+import models
 from json import dumps, loads
 
 
@@ -33,9 +32,8 @@ class FileStorage:
             with open(self.__file_path, encoding="utf-8", mode="r") as file:
                 objects = loads(file.read())
                 for key, kwargs in objects.items():
-                    if key.startswith("BaseModel"):
-                        self.__objects[key] = BaseModel(**kwargs)
-                    if key.startswith("User"):
-                        self.__objects[key] = User(**kwargs)
+                    cls = key.split(".")[0]
+                    if cls in models.classes:
+                        self.__objects[key] = models.classes[cls](**kwargs)
         except FileNotFoundError:
             pass
