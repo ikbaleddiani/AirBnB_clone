@@ -7,15 +7,19 @@ from datetime import datetime
 import uuid
 
 
+FORMAT = "%Y-%m-%dT%H:%M:%S.%f"
+
+
 class BaseModel:
     """ Defines BaseModel class """
+
     def __init__(self, *args, **kwargs):
         """ Initialises BaseModel instance and subclasses instances """
         if kwargs:
             for key, value in kwargs.items():
                 if key != "__class__":
                     if key in ("created_at", "updated_at"):
-                        setattr(self, key, datetime.fromisoformat(value))
+                        setattr(self, key, datetime.strptime(value, FORMAT))
                     else:
                         setattr(self, key, value)
         else:
