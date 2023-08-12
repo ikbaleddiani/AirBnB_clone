@@ -21,3 +21,5 @@ class BaseModelTests(unittest.TestCase):
         self.assertEqual(dic, b.to_dict())
         s = str(b)
         self.assertEqual(s, str(b))
+        b2 = BaseModel(dic)
+        self.assertIsInstance(b2, BaseModel)
