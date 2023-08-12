@@ -37,10 +37,8 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_create(self, line):
-        """
-            ** Creates a new instance **
-            syntax: create <class name>
-        """
+        """Instantiate a given model"""
+
         if line:
             args = line.split()
             if args[0] in models.classes:
