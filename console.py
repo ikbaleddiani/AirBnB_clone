@@ -113,17 +113,18 @@ class HBNBCommand(cmd.Cmd):
                 - <class name>.all()
         """
         objects = models.storage.all()
-        if line:
-            args = line.split()
-            if args[0] in models.classes:
-                print(
-                        list(
-                            str(value) for key, value in objects.items() if
-                            key.startswith(args[0])))
+        if objects:
+            if line:
+                args = line.split()
+                if args[0] in models.classes:
+                    print(
+                            list(
+                                str(value) for key, value in objects.items() if
+                                key.startswith(args[0])))
+                else:
+                    print("** class doesn't exist **")
             else:
-                print("** class doesn't exist **")
-        else:
-            print(list(str(value) for key, value in objects.items()))
+                print(list(str(value) for key, value in objects.items()))
 
     def do_update(self, line):
         """
