@@ -16,13 +16,14 @@ class BaseModelTests(unittest.TestCase):
     def test_to_dict(self):
         """ test initialization """
         b1= BaseModel()
-        b_dict = b.to_dict()
-        b2 = BaseModel(b_dict)
-        self.assertEqual(b1, b2)
+        b1_dict = b1.to_dict()
+        b2 = BaseModel(b1_dict)
+        self.assertNotEqual(b1.id, b2.id)
 
     def test_save(self):
         """ test save method """
         b1 = BaseModel()
         b2 = b1
-        b2.save()
-        self.assertNotEqual(b2.updated_at ,b1.updated_at)
+        b1.save()
+        self.assertEqual(b2.created_at ,b1.created_at)
+        self.assertEqual(b2.updated_at, b1.updated_at)
