@@ -1,6 +1,6 @@
 #!/usr/bin/puthon3
 """
-    models package
+    Defines models package
 """
 from models.base_model import BaseModel
 from models.user import User

@@ -1,16 +1,16 @@
 #!/usr/bin/python3
 """
-    BaseModel model
+    BaseModel that defines all common attributes/methods for other classes
 """
-import uuid
-from datetime import datetime
 import models
+from datetime import datetime
+import uuid
 
 
 class BaseModel:
-    """ class that defines all common attributes/methods for other classes """
+    """ Defines BaseModel class """
     def __init__(self, *args, **kwargs):
-        """ Initialises BaseModel instance """
+        """ Initialises BaseModel instance and subclasses instances """
         if kwargs:
             for key, value in kwargs.items():
                 if key != "__class__":
@@ -25,7 +25,7 @@ class BaseModel:
             models.storage.new(self)
 
     def __str__(self):
-        """ Returns a string representation for current basemodel """
+        """ Returns a string representation for current instance """
         return "[{}] ({}) {}".format(
                 self.__class__.__name__,
                 self.id,
@@ -33,12 +33,12 @@ class BaseModel:
                 )
 
     def save(self):
-        """ Updates the public instance updated_at with current datetime """
+        """ Updates the public instance attribute 'updated_at' """
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
-        """ Returns a dictionary containing all keys/values of __dict__ """
+        """ Returns a dictionary containing all keys/values of '__dict__' """
         dic = {"__class__": self.__class__.__name__}
         for key, value in self.__dict__.items():
             if key in ("created_at", "updated_at"):

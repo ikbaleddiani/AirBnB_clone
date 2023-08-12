@@ -6,7 +6,7 @@ from models.base_model import BaseModel
 
 
 class Review(BaseModel):
-    """ Defines class Review """
+    """ Defines Review class """
     place_id = ""
     user_id = ""
     text = ""
