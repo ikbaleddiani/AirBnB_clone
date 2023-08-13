@@ -8,6 +8,7 @@ from re import fullmatch, search
 
 
 def cast_value(value):
+    """ Try to cast type """
     try:
         value = int(value)
     except Exception:
@@ -140,28 +141,38 @@ class HBNBCommand(cmd.Cmd):
             if args[0] in models.classes:
                 classname = models.classes[args[0]].__name__
                 try:
+                    id = args[1]
                     obj = models.storage.all()
                     try:
-                        obj = obj[classname + "." + args[1]]
-                        for i in range(2, len(args) - 1, 2):
-                            try:
+                        obj = obj[classname + "." + id]
+                        try:
+                            attribute = args[2]
+                            i = 2
+                            j = 1
+                            while i < len(args):
                                 attribute = args[i]
                                 try:
-                                    if ">$<" in args[i + 1]:
-                                        value = args[i + 1].replace(">$<", " ")
-                                    elif args[i + 1].startswith("\""):
-                                        value = line.split("\"")[1]
+                                    value = args[i + 1]
+                                    if ">$<" in value:
+                                        value = value.replace(">$<", " ")
                                         i += 2
+                                    elif value.startswith("\""):
+                                        value = line.split("\"")[j]
+                                        i = i + 3
+                                        j = j + 2
                                     else:
-                                        value = args[i + 1]
+                                        i += 2
                                     value = cast_value(value)
                                     setattr(obj, attribute, value)
                                     obj.save()
                                 except IndexError:
                                     print("** value missing **")
-                            except IndexError:
-                                print("** attribute name missing **")
-                    except IndexError:
+                                    break
+                                if i == len(args) - 1:
+                                    break
+                        except IndexError:
+                            print("** attribute name missing **")
+                    except Exception:
                         print("** no instance found **")
                 except IndexError:
                     print("** instance id missing **")
@@ -220,7 +231,7 @@ class HBNBCommand(cmd.Cmd):
                         print(count)
                     else:
                         print("** class doesn't exist **")
-        except Exception:
+        except IndexError:
             print("** class name missing **")
 
 
