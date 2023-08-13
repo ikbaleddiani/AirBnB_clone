@@ -113,20 +113,17 @@ class HBNBCommand(cmd.Cmd):
                 - <class name>.all()
         """
         objects = models.storage.all()
-        if objects:
-            if line:
-                args = line.split()
-                if args[0] in models.classes:
-                    print(
-                            list(
-                                str(value) for key, value in objects.items() if
-                                key.startswith(args[0])))
-                else:
-                    print("** class doesn't exist **")
+        if line:
+            args = line.split()
+            if args[0] in models.classes:
+                print(
+                        list(
+                            str(value) for key, value in objects.items() if
+                            key.startswith(args[0])))
             else:
-                print(list(str(value) for key, value in objects.items()))
+                print("** class doesn't exist **")
         else:
-            print("")
+            print(list(str(value) for key, value in objects.items()))
 
     def do_update(self, line):
         """
@@ -143,6 +140,7 @@ class HBNBCommand(cmd.Cmd):
             if args[0] in models.classes:
                 classname = models.classes[args[0]].__name__
                 try:
+                    id = args[1]
                     obj = models.storage.all()
                     try:
                         obj = obj[classname + "." + args[1]]
@@ -161,13 +159,13 @@ class HBNBCommand(cmd.Cmd):
                                     value = cast_value(value)
                                     setattr(obj, attribute, value)
                                     obj.save()
-                                except Exception:
+                                except IndexError:
                                     print("** value missing **")
-                            except Exception:
+                            except IndexError:
                                 print("** attribute name missing **")
-                    except Exception:
+                    except IndexError:
                         print("** no instance found **")
-                except Exception:
+                except IndexError:
                     print("** instance id missing **")
             else:
                 print("** class doesn't exist **")
