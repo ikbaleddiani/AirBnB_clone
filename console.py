@@ -143,7 +143,7 @@ class HBNBCommand(cmd.Cmd):
                     id = args[1]
                     obj = models.storage.all()
                     try:
-                        obj = obj[classname + "." + args[1]]
+                        obj = obj[classname + "." + id]
                         for i in range(2, len(args) - 1, 2):
                             print(i)
                             try:
