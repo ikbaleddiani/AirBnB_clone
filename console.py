@@ -125,6 +125,8 @@ class HBNBCommand(cmd.Cmd):
                     print("** class doesn't exist **")
             else:
                 print(list(str(value) for key, value in objects.items()))
+        else:
+            print("")
 
     def do_update(self, line):
         """
