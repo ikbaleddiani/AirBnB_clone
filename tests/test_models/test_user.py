@@ -8,4 +8,9 @@ from models.user import User
 
 class UserTests(unittest.TestCase):
     """ Defines User tests cases class """
-    pass
+    def test_instance(self):
+        """ tests cases for User model """
+        self.assertEqual(User().email, "")
+        self.assertEqual(User().password, "")
+        self.assertEqual(User().first_name, "")
+        self.assertEqual(User().last_name, "")
