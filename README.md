@@ -63,5 +63,5 @@
 > - User.destroy(07f4106a-bd58-4635-a1a0-e2cb68799e69)
 
 ## AUTHORS:
-> Ikbal Eddiani <sup>[ikbaleddiani](https://github.com/ikbaleddiani)</sup>
-> Ahmed Rifki <sup>[AhmedSeeker](https://github.com/AhmedSeeker)</sup>
+- Ikbal Eddiani <sup>[ikbaleddiani](https://github.com/ikbaleddiani)</sup>
+- Ahmed Rifki <sup>[AhmedSeeker](https://github.com/AhmedSeeker)</sup>
