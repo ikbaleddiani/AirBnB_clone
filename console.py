@@ -140,10 +140,9 @@ class HBNBCommand(cmd.Cmd):
             if args[0] in models.classes:
                 classname = models.classes[args[0]].__name__
                 try:
-                    id = args[1]
                     obj = models.storage.all()
                     try:
-                        obj = obj[classname + "." + id]
+                        obj = obj[classname + "." + args[1]]
                         for i in range(2, len(args) - 1, 2):
                             try:
                                 attribute = args[i]
