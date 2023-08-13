@@ -3,13 +3,13 @@
 ### **project: 0x00. AirBnB clone - the console** <sup>``Group project`` ``Python`` ``OOP``</sup>
 
 **Team:**
-    - Ikbal Eddiani <sup>[ikbaleddiani](https://github.com/ikbaleddiani)</sup>
-    - Ahmed Rifki <sup>[AhmedSeeker](https://github.com/AhmedSeeker)</sup>
+- Ikbal Eddiani <sup>[ikbaleddiani](https://github.com/ikbaleddiani)</sup>
+- Ahmed Rifki <sup>[AhmedSeeker](https://github.com/AhmedSeeker)</sup>
 
 #### **About Project:**
 > - A command interpreter to manipulate data without a visual interface, like in a Shell (perfect for development and debugging)
 > - This is the first step towards building a first full web application: the AirBnB clone.
-> -  This project will be used with all other following projects: HTML/CSS templating, database storage, API, front-end integration…
+> - This project will be used with all other following projects: HTML/CSS templating, database storage, API, front-end integration…
 
 #### **Use_case of the command interpreter:**
 > - Create a new object (ex: a new User or a new Place)
