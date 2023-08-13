@@ -18,6 +18,7 @@ class BaseModelTests(unittest.TestCase):
         b.save()
         self.assertEqual(date_time, b.created_at)
         dic = b.to_dict()
+        self.assertEqual(dic, b.to_dict()
         self.assertEqual(dic["__class__"], b.__class__.__name__)
         self.assertEqual(dic["id"], b.id)
         self.assertEqual(dic["created_at"], b.created_at.isoformat())
