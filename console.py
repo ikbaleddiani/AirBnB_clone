@@ -145,7 +145,6 @@ class HBNBCommand(cmd.Cmd):
                     try:
                         obj = obj[classname + "." + id]
                         for i in range(2, len(args) - 1, 2):
-                            print(i)
                             try:
                                 attribute = args[i]
                                 try:
