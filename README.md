@@ -53,7 +53,7 @@
 >     - ``<class name>.update(<id>, [dict])``
 >     - -------------------------------------------------------------------
 >     - Note: attribute value with a space must be between double quote
-> - create User
+> - create User:
 >   - output
 >     - 07f4106a-bd58-4635-a1a0-e2cb68799e69
 > - User.show(07f4106a-bd58-4635-a1a0-e2cb68799e69)
