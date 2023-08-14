@@ -10,8 +10,7 @@ class BaseModel:
     """ Defines BaseModel class """
 
     def __init__(self, *args, **kwargs):
-     """ Initialises BaseModel instance and subclasses instances """
-
+        """ Initialises BaseModel instance and subclasses instances """
         if kwargs:
             for key, value in kwargs.items():
                 if key != "__class__":
