@@ -69,7 +69,3 @@ class TestHBNBCommand(unittest.TestCase):
             HBNBCommand().onecmd("update User {} name".format(id))
             output = "** value missing **"
             self.assertEqual(f.getvalue().strip(), output)
-
-
-if __name__ == '__main__':
-    unittest.main()
