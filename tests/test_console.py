@@ -42,7 +42,6 @@ class TestHBNBCommand(unittest.TestCase):
         A.save()
         R.save()
 
-
     def tearDown(self):
         """ removes temporary files """
         try:
@@ -53,8 +52,9 @@ class TestHBNBCommand(unittest.TestCase):
     def test_commands(self):
         """ Tests cases for all Console command """
         commands = ["create", "show", "update", "destroy", "all", "count"]
-        classes = ["BaseModel", "User", "State", "City", "Place",
-                "Amenity", "Review"]
+        classes = [
+                "BaseModel", "User", "State", "City",
+                "Place", "Amenity", "Review"]
 
         self.assertEqual(True, HBNBCommand().onecmd("quit"))
 
@@ -121,8 +121,8 @@ class TestHBNBCommand(unittest.TestCase):
         FileStorage().save()
         objects = FileStorage().all()
         for cls in classes:
-            instances = [str(value) for key, value in objects.items() if cls in key]
+            instances = [
+                    str(value) for key, value in objects.items() if cls in key]
             with patch('sys.stdout', new=StringIO()) as f:
                 HBNBCommand().precmd("{}.update()".format(cls))
                 self.assertEqual(f.getvalue().strip(), '')
-
