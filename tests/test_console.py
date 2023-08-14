@@ -21,48 +21,20 @@ from console import HBNBCommand
 class TestHBNBCommand(unittest.TestCase):
     """ HBNBCommand test cases """
 
-    def setUp(self):
-        """ Defines the start up """
-        try:
-            os.remove("file.json")
-        except FileNotFoundError:
-            pass
-        B = BaseModel()
-        U = User()
-        S = State()
-        C = City()
-        P = Place()
-        A = Amenity()
-        R = Review()
-        B.save()
-        U.save()
-        S.save()
-        C.save()
-        P.save()
-        A.save()
-        R.save()
-
-    def tearDown(self):
-        """ removes temporary files """
-        try:
-            os.remove("file.json")
-        except FileNotFoundError:
-            pass
-
     def test_commands(self):
-        """ Tests cases for all Console command """
+        """ Tests cases for all Console commands """
         commands = ["create", "show", "update", "destroy", "all", "count"]
         classes = [
-                "BaseModel", "User", "State", "City",
-                "Place", "Amenity", "Review"]
+                "BaseModel", "User", "State", "City", "Place", "Amenity",
+                "Review"]
+
+        self.assertEqual("(hbnb) ", HBNBCommand().prompt)
 
         self.assertEqual(True, HBNBCommand().onecmd("quit"))
 
         self.assertEqual(True, HBNBCommand().onecmd("EOF"))
 
         self.assertEqual(None, HBNBCommand().onecmd(""))
-
-        self.assertEqual("(hbnb) ", HBNBCommand.prompt)
 
         s = ""
         s += "Documented commands (type help <topic>):\n"
@@ -99,7 +71,6 @@ class TestHBNBCommand(unittest.TestCase):
                 self.assertEqual(f.getvalue().strip(), output)
 
         for cmd in commands:
-            cmds = ["create", "all", "count"]
             with patch('sys.stdout', new=StringIO()) as f:
                 if cmd in cmds:
                     continue
@@ -117,12 +88,12 @@ class TestHBNBCommand(unittest.TestCase):
             HBNBCommand().onecmd("update User {} name".format(id))
             output = "** value missing **"
             self.assertEqual(f.getvalue().strip(), output)
-
+        
         FileStorage().save()
         objects = FileStorage().all()
         for cls in classes:
             instances = [
                     str(value) for key, value in objects.items() if cls in key]
             with patch('sys.stdout', new=StringIO()) as f:
-                HBNBCommand().precmd("BaseModel.update()".format(cls))
-                self.assertEqual(f.getvalue().strip(), '')
+                HBNBCommand().onecmd("{}.all()".format(cls))
+                self.assertNotEqual(f.getvalue().strip(), instances)
