@@ -75,6 +75,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, line):
         """Destroy command deletes an instance based on the class name & id """
+
         if line:
             args = line.split()
             if args[0] in models.classes:
@@ -95,13 +96,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
 
     def do_all(self, line):
-        """
-            ** Prints all string representation of all instances **
-            syntax:
-                - all [<class name>]
-                or
-                - <class name>.all()
-        """
+        """Print all instances in string representation """
+        
         objects = models.storage.all()
         if line:
             args = line.split()
