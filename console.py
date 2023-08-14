@@ -74,13 +74,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
 
     def do_destroy(self, line):
-        """
-            ** Deletes the instance **
-            syntax:
-                - destroy <class name> <id>
-                or
-                - <class name>.destroy(<id>)
-        """
+        """Destroy command deletes an instance based on the class name & id """
         if line:
             args = line.split()
             if args[0] in models.classes:
