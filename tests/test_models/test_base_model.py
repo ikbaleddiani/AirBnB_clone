@@ -9,7 +9,7 @@ class BaseModelTests(unittest.TestCase):
     """ Defines BaseModel tests cases class """
 
     def test_instance(self):
-        """ test initialization """
+        """*** test initialization ***"""
 
         b = BaseModel()
         id = b.id
