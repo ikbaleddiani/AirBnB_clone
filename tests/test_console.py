@@ -124,5 +124,5 @@ class TestHBNBCommand(unittest.TestCase):
             instances = [
                     str(value) for key, value in objects.items() if cls in key]
             with patch('sys.stdout', new=StringIO()) as f:
-                HBNBCommand().precmd("{}.update()".format(cls))
+                HBNBCommand().precmd("BaseModel.update()".format(cls))
                 self.assertEqual(f.getvalue().strip(), '')
