@@ -98,7 +98,6 @@ class HBNBCommand(cmd.Cmd):
 
     def do_all(self, line):
         """Print all instances in string representation """
-        
         objects = models.storage.all()
         if line:
             args = line.split()
