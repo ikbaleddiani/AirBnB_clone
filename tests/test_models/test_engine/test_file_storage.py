@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-"""
-    FileStorage tests cases model
-"""
+"""FileStorage tests cases model"""
+
 import unittest
 from models.base_model import BaseModel
 from models.user import User
