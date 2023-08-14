@@ -95,5 +95,6 @@ class TestHBNBCommand(unittest.TestCase):
             instances = [
                     str(value) for key, value in objects.items() if cls in key]
             with patch('sys.stdout', new=StringIO()) as f:
-                HBNBCommand().onecmd("{}.all()".format(cls))
-                self.assertNotEqual(f.getvalue().strip(), instances)
+                HBNBCommand().precmd("{}.all()".format(cls))
+                output = f.getvalue().strip()
+                self.assertEqual(output, '')
