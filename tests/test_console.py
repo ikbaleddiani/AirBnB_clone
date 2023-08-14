@@ -17,6 +17,8 @@ class TestHBNBCommand(unittest.TestCase):
         commands = ["create", "show", "update", "destroy", "all", "count"]
 
         self.assertEqual(True, HBNBCommand().onecmd("quit"))
+        self.assertEqual(True, HBNBCommand().onecmd("EOF"))
+        self.assertEqual(None, HBNBCommand().onecmd(""))
         self.assertEqual("(hbnb) ", HBNBCommand.prompt)
         s = ""
         s += "Documented commands (type help <topic>):\n"
