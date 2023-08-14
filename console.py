@@ -52,13 +52,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
 
     def do_show(self, line):
-        """
-            ** Prints the string representation of the instance **
-            syntax:
-                - show <class name> <id>
-                or
-                - <class name>.show(<id>)
-        """
+        """print <class name> <id> """
+
         if line:
             args = line.split()
             if args[0] in models.classes:
