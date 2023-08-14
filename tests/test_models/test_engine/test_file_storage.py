@@ -14,6 +14,7 @@ from models.engine.file_storage import FileStorage
 
 class FileStorageTests(unittest.TestCase):
     """ Defines BaseModel tests cases class """
+
     def test_instance(self):
         B = BaseModel()
         U = User()
