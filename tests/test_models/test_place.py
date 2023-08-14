@@ -1,15 +1,16 @@
 #!/usr/bin/python3
-"""
-    Place class tests cases model
-"""
+"""Place class tests cases model"""
+
 import unittest
 from models.place import Place
 
 
 class PlaceTests(unittest.TestCase):
     """ Defines Place tests cases class """
+
     def test_initialization(self):
         """ test case of initialization """
+
         self.assertEqual(Place().city_id, "")
         self.assertEqual(Place().user_id, "")
         self.assertEqual(Place().name, "")

@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-"""
-    BaseModel tests cases model
-"""
+"""BaseModel tests cases model"""
+
 import unittest
 from models.base_model import BaseModel
 
@@ -11,6 +10,7 @@ class BaseModelTests(unittest.TestCase):
 
     def test_instance(self):
         """ test initialization """
+
         b = BaseModel()
         id = b.id
         self.assertEqual(b.id, id)
