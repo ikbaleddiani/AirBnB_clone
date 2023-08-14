@@ -112,15 +112,8 @@ class HBNBCommand(cmd.Cmd):
             print(list(str(value) for key, value in objects.items()))
 
     def do_update(self, line):
-        """
-            ** Updates or add new attributes to the instance **
-            syntax:
-                - update <class name> <id> <attribute name> <attribute value>
-                or
-                - <class name>.update(<id>, [dict])
-            -------------------------------------------------------------------
-            Note: attribute value with a space must be between double quote
-        """
+        """Updates or add new attributes to the instance"""
+
         if line:
             args = line.split()
             if args[0] in models.classes:
