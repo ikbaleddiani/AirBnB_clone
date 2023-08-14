@@ -16,6 +16,7 @@ class TestHBNBCommand(unittest.TestCase):
         """ Tests cases for all Console command """
         commands = ["create", "show", "update", "destroy", "all", "count"]
 
+        self.assertEqual(True, HBNBCommand().onecmd("quit"))
         self.assertEqual("(hbnb) ", HBNBCommand.prompt)
         s = ""
         s += "Documented commands (type help <topic>):\n"
@@ -58,7 +59,7 @@ class TestHBNBCommand(unittest.TestCase):
                 HBNBCommand().onecmd("{} User xxxx".format(cmd))
                 output = "** no instance found **"
                 self.assertEqual(f.getvalue().strip(), output)
-        
+
         with patch('sys.stdout', new=StringIO()) as f:
             id = User().id
             HBNBCommand().onecmd("update User {}".format(id))
