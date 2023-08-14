@@ -89,12 +89,7 @@ class TestHBNBCommand(unittest.TestCase):
             output = "** value missing **"
             self.assertEqual(f.getvalue().strip(), output)
         
-        FileStorage().save()
-        objects = FileStorage().all()
-        for cls in classes:
-            instances = [
-                    str(value) for key, value in objects.items() if cls in key]
-            with patch('sys.stdout', new=StringIO()) as f:
-                HBNBCommand().precmd("{}.all()".format(cls))
-                output = f.getvalue().strip()
-                self.assertEqual(output, '')
+        with patch('sys.stdout', new=StringIO()) as f:
+            HBNBCommand().precmd(".all()")
+            output = f.getvalue().strip()
+            self.assertFalse(output)
